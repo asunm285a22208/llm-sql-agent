@@ -1,0 +1,60 @@
+{
+  "sales_data": [
+    {
+      "column": "order_id",
+      "type": "bigint"
+    },
+    {
+      "column": "order_date",
+      "type": "date"
+    },
+    {
+      "column": "ship_date",
+      "type": "date"
+    },
+    {
+      "column": "region",
+      "type": "character varying"
+    },
+    {
+      "column": "country",
+      "type": "character varying"
+    },
+    {
+      "column": "item_type",
+      "type": "character varying"
+    },
+    {
+      "column": "sales_channel",
+      "type": "character varying"
+    },
+    {
+      "column": "order_priority",
+      "type": "character varying"
+    },
+    {
+      "column": "units_sold",
+      "type": "integer"
+    },
+    {
+      "column": "unit_price",
+      "type": "numeric"
+    },
+    {
+      "column": "unit_cost",
+      "type": "numeric"
+    },
+    {
+      "column": "total_revenue",
+      "type": "numeric"
+    },
+    {
+      "column": "total_cost",
+      "type": "numeric"
+    },
+    {
+      "column": "total_profit",
+      "type": "numeric"
+    }
+  ]
+}

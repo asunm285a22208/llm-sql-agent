@@ -1,0 +1,6 @@
+streamlit
+pandas
+groq
+postgres
+psycopg2
+json
