@@ -7,14 +7,14 @@ import streamlit as st
 from groq import Groq
 from dotenv import load_dotenv
 
-# Load environment variables
+
 load_dotenv()
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
-# Load schema
+
 schema = json.load(open("schema.json"))
 
-# Functions
+
 def generate_sql(question: str) -> str:
     prompt = f"""
 You are an expert PostgreSQL data analyst.
@@ -61,7 +61,7 @@ def check_safety(sql: str):
     if any(word in sql.lower() for word in forbidden):
         raise ValueError("Unsafe SQL detected!")
 
-# Streamlit UI
+# Streamlit
 st.title("LLM SQL Agent for PostgreSQL")
 question = st.text_input("Ask a question about your sales_data:", "")
 
