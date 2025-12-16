@@ -54,21 +54,19 @@ def execute_sql(sql: str) -> pd.DataFrame:
 if __name__ == "__main__":
     question = "Top 5 countries by total revenue"
 
-    # 1. Generate SQL from LLM
+    
     sql_raw = generate_sql(question)
 
-    # 2. Clean Markdown fences
+    
     sql_clean = clean_sql(sql_raw)
     print("Generated SQL (cleaned):")
     print(sql_clean)
     
-    # 3. Safety check before execution
     forbidden = ["drop", "delete", "truncate", "update", "insert"]
     if any(word in sql_clean.lower() for word in forbidden):
         raise ValueError("Unsafe SQL detected! Execution stopped.")
 
 
-    # 3. Execute SQL safely
     df = execute_sql(sql_clean)
     print("\nQuery Result:")
     print(df)
