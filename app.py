@@ -67,27 +67,24 @@ question = st.text_input("Ask a question about your sales_data:", "")
 
 if st.button("Run Query") and question.strip() != "":
     try:
-        # 1. Generate SQL
+        
         sql_raw = generate_sql(question)
         sql_clean = clean_sql(sql_raw)
 
-        # 2. Safety check
         check_safety(sql_clean)
-
-        # 3. Execute
         df = execute_sql(sql_clean)
 
-        # 4. Show generated SQL
+       
         st.subheader("Generated SQL")
         st.code(sql_clean, language="sql")
 
-        # 5. Show results
+        
         st.subheader("Query Results")
         st.dataframe(df)
 
-        # 6. Optional: chart if numeric columns exist
+        
         numeric_cols = df.select_dtypes(include="number").columns
-        # Chart or Metric
+        
         if df.shape[0] == 1 and df.shape[1] == 1:
             st.metric(label="Result", value=df.iloc[0,0])
         else:
