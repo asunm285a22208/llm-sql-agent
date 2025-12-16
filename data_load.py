@@ -20,11 +20,10 @@ cur = conn.cursor()
 
 df = pd.read_csv(CSV_FILE)
 
-# Convert dates safely
+
 df['order_date'] = pd.to_datetime(df['order_date'], errors='coerce')
 df['ship_date'] = pd.to_datetime(df['ship_date'], errors='coerce')
 
-# Drop rows with invalid primary key
 df.dropna(subset=['order_id'], inplace=True)
 
 insert_query = """
