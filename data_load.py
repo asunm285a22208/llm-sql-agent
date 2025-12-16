@@ -1,15 +1,19 @@
 import psycopg2
 import pandas as pd
 from psycopg2.extras import execute_batch
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 CSV_FILE = "/Users/macos/Downloads/1000000_Sales_Recordscleaned.csv"
 
 conn = psycopg2.connect(
-    host="localhost",
-    database="LLMdb",
-    user="postgres",
-    password="2005",
-    port="5432"
+        host=os.getenv("DB_HOST"),
+        database=os.getenv("DB_NAME"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+         port=os.getenv("DB_PORT", "5432")
 )
 
 cur = conn.cursor()

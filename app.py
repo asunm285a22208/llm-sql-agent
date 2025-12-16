@@ -44,15 +44,16 @@ def clean_sql(sql: str) -> str:
 
 def execute_sql(sql: str) -> pd.DataFrame:
     conn = psycopg2.connect(
-        host="localhost",
-        database="LLMDB",
-        user="postgres",
-        password="2005",
-        port="5432"
-    )
+        host=st.secrets["DB"]["DB_HOST"],
+        database=st.secrets["DB"]["DB_NAME"],
+        user=st.secrets["DB"]["DB_USER"],
+        password=st.secrets["DB"]["DB_PASSWORD"],
+        port=st.secrets["DB"]["DB_PORT"]
+)
     df = pd.read_sql_query(sql, conn)
     conn.close()
     return df
+
 
 def check_safety(sql: str):
     """Prevent destructive SQL commands"""
